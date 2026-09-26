@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NEON CITY - Life Simulator</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <header>
+        <div class="logo">🌆 NEON CITY</div>
+
+        <nav>
+            <button onclick="mostrarSeccion('inicio')">🏠 Inicio</button>
+            <button onclick="mostrarSeccion('trabajo')">💼 Trabajo</button>
+            <button onclick="mostrarSeccion('ciudad')">🗺️ Ciudad</button>
+            <button onclick="mostrarSeccion('tienda')">🛒 Tiendas</button>
+            <button onclick="mostrarSeccion('banco')">🏦 Banco</button>
+            <button onclick="mostrarSeccion('estudios')">🎓 Estudios</button>
+        </nav>
+    </header>
+
+
+    <main>
+
+        <!-- INICIO -->
+        <section id="inicio" class="seccion activa">
+
+            <div class="hero">
+                <div>
+                    <p class="mini">SIMULADOR DE VIDA</p>
+                    <h1>Bienvenido a <span>NEON CITY</span></h1>
+                    <p>
+                        Trabaja, estudia, compra una casa, consigue vehículos,
+                        administra tu dinero y construye tu propia vida.
+                    </p>
+                </div>
+            </div>
+
+            <div class="perfil">
+                <div>
+                    <h2>👤 <span id="nombreJugador">Alex</span></h2>
+                    <p>Nivel <span id="nivel">1</span></p>
+                    <div class="barra">
+                        <div id="xpBarra"></div>
+                    </div>
+                    <p>XP: <span id="xp">0</span> / 100</p>
+                </div>
+
+                <div class="dinero">
+                    💰 $<span id="dinero">1000</span>
+                </div>
+            </div>
+
+
+            <div class="estadisticas">
+
+                <div class="stat">
+                    ❤️
+                    <strong>Salud</strong>
+                    <span id="salud">100</span>
+                    <div class="barra">
+                        <div id="saludBarra"></div>
+                    </div>
+                </div>
+
+                <div class="stat">
+                    ⚡
+                    <strong>Energía</strong>
+                    <span id="energia">100</span>
+                    <div class="barra">
+                        <div id="energiaBarra"></div>
+                    </div>
+                </div>
+
+                <div class="stat">
+                    🍔
+                    <strong>Hambre</strong>
+                    <span id="hambre">20</span>
+                    <div class="barra">
+                        <div id="hambreBarra"></div>
+                    </div>
+                </div>
+
+                <div class="stat">
+                    😊
+                    <strong>Felicidad</strong>
+                    <span id="felicidad">80</span>
+                    <div class="barra">
+                        <div id="felicidadBarra"></div>
+                    </div>
+                </div>
+
+            </div>
+
+
+            <div class="info-grid">
+
+                <div class="card">
+                    <h3>📅 Fecha</h3>
+                    <p id="fecha">Lunes, 1 de enero</p>
+                </div>
+
+                <div class="card">
+                    <h3>🕐 Hora</h3>
+                    <p id="hora">08:00</p>
+                </div>
+
+                <div class="card">
+                    <h3>💼 Trabajo</h3>
+                    <p id="trabajoActual">Desempleado</p>
+                </div>
+
+                <div class="card">
+                    <h3>🏠 Casa</h3>
+                    <p id="casaActual">Sin casa</p>
+                </div>
+
+                <div class="card">
+                    <h3>🚗 Vehículo</h3>
+                    <p id="vehiculoActual">A pie</p>
+                </div>
+
+                <div class="card">
+                    <h3>⭐ Reputación</h3>
+                    <p id="reputacion">0</p>
+                </div>
+
+            </div>
+
+
+            <div class="acciones">
+
+                <button class="accion" onclick="comer()">
+                    🍔 Comer
+                </button>
+
+                <button class="accion" onclick="descansar()">
+                    🛋️ Descansar
+                </button>
+
+                <button class="accion" onclick="dormir()">
+                    🛏️ Dormir
+                </button>
+
+                <button class="accion peligro" onclick="reiniciarJuego()">
+                    🔄 Nuevo juego
+                </button>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- TRABAJO -->
+        <section id="trabajo" class="seccion">
+
+            <h2 class="titulo">💼 Trabajos</h2>
+            <p class="subtitulo">
+                Consigue experiencia y gana dinero para mejorar tu vida.
+            </p>
+
+            <div class="trabajos">
+
+                <div class="trabajo">
+                    <h3>🛵 Repartidor</h3>
+                    <p>Salario: <b>$80</b></p>
+                    <p>Energía: -15</p>
+                    <p>Reputación requerida: 0</p>
+                    <button onclick="trabajar('Repartidor',80,15,0)">
+                        Trabajar
+                    </button>
+                </div>
+
+                <div class="trabajo">
+                    <h3>🚕 Taxista</h3>
+                    <p>Salario: <b>$120</b></p>
+                    <p>Energía: -20</p>
+                    <p>Reputación requerida: 5</p>
+                    <button onclick="trabajar('Taxista',120,20,5)">
+                        Trabajar
+                    </button>
+                </div>
+
+                <div class="trabajo">
+                    <h3>🔧 Mecánico</h3>
+                    <p>Salario: <b>$160</b></p>
+                    <p>Energía: -25</p>
+                    <p>Reputación requerida: 15</p>
+                    <button onclick="trabajar('Mecánico',160,25,15)">
+                        Trabajar
+                    </button>
+                </div>
+
+                <div class="trabajo">
+                    <h3>💻 Programador</h3>
+                    <p>Salario: <b>$230</b></p>
+                    <p>Energía: -30</p>
+                    <p>Reputación requerida: 30</p>
+                    <button onclick="trabajar('Programador',230,30,30)">
+                        Trabajar
+                    </button>
+                </div>
+
+                <div class="trabajo">
+                    <h3>👔 Gerente</h3>
+                    <p>Salario: <b>$350</b></p>
+                    <p>Energía: -35</p>
+                    <p>Reputación requerida: 50</p>
+                    <button onclick="trabajar('Gerente',350,35,50)">
+                        Trabajar
+                    </button>
+                </div>
+
+                <div class="trabajo especial">
+                    <h3>🚀 Director tecnológico</h3>
+                    <p>Salario: <b>$600</b></p>
+                    <p>Energía: -40</p>
+                    <p>Reputación requerida: 80</p>
+                    <button onclick="trabajar('Director tecnológico',600,40,80)">
+                        Trabajar
+                    </button>
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- CIUDAD -->
+        <section id="ciudad" class="seccion">
+
+            <h2 class="titulo">🗺️ Ciudad</h2>
+            <p class="subtitulo">Explora diferentes lugares de Neon City.</p>
+
+            <div class="mapa">
+
+                <button onclick="visitar('Centro')">
+                    🏙️
+                    <strong>Centro</strong>
+                    <small>Zona comercial</small>
+                </button>
+
+                <button onclick="visitar('Parque')">
+                    🌳
+                    <strong>Parque</strong>
+                    <small>Descansar</small>
+                </button>
+
+                <button onclick="visitar('Universidad')">
+                    🎓
+                    <strong>Universidad</strong>
+                    <small>Estudiar</small>
+                </button>
+
+                <button onclick="visitar('Hospital')">
+                    🏥
+                    <strong>Hospital</strong>
+                    <small>Recuperar salud</small>
+                </button>
+
+                <button onclick="visitar('Restaurante')">
+                    🍔
+                    <strong>Restaurante</strong>
+                    <small>Comer</small>
+                </button>
+
+                <button onclick="visitar('Banco')">
+                    🏦
+                    <strong>Banco</strong>
+                    <small>Administrar dinero</small>
+                </button>
+
+                <button onclick="visitar('Concesionario')">
+                    🚘
+                    <strong>Concesionario</strong>
+                    <small>Comprar vehículos</small>
+                </button>
+
+                <button onclick="visitar('Casa')">
+                    🏠
+                    <strong>Casa</strong>
+                    <small>Tu hogar</small>
+                </button>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- TIENDAS -->
+        <section id="tienda" class="seccion">
+
+            <h2 class="titulo">🛒 Tiendas</h2>
+
+            <div class="productos">
+
+                <div class="producto">
+                    <div class="emoji">🍔</div>
+                    <h3>Comida</h3>
+                    <p>Recupera energía y reduce el hambre.</p>
+                    <b>$20</b>
+                    <button onclick="comprarComida()">Comprar</button>
+                </div>
+
+                <div class="producto">
+                    <div class="emoji">👕</div>
+                    <h3>Ropa nueva</h3>
+                    <p>Aumenta tu felicidad.</p>
+                    <b>$120</b>
+                    <button onclick="comprarRopa()">Comprar</button>
+                </div>
+
+                <div class="producto">
+                    <div class="emoji">📱</div>
+                    <h3>Smartphone</h3>
+                    <p>Mejora tu reputación.</p>
+                    <b>$400</b>
+                    <button onclick="comprarTelefono()">Comprar</button>
+                </div>
+
+                <div class="producto">
+                    <div class="emoji">🚗</div>
+                    <h3>Auto usado</h3>
+                    <p>Tu primer vehículo.</p>
+                    <b>$2000</b>
+                    <button onclick="comprarAuto()">Comprar</button>
+                </div>
+
+                <div class="producto">
+                    <div class="emoji">🏠</div>
+                    <h3>Apartamento</h3>
+                    <p>Obtén tu propio hogar.</p>
+                    <b>$15000</b>
+                    <button onclick="comprarCasa()">Comprar</button>
+                </div>
+
+                <div class="producto">
+                    <div class="emoji">🏎️</div>
+                    <h3>Auto deportivo</h3>
+                    <p>Un vehículo de lujo.</p>
+                    <b>$50000</b>
+                    <button onclick="comprarDeportivo()">Comprar</button>
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- BANCO -->
+        <section id="banco" class="seccion">
+
+            <h2 class="titulo">🏦 Banco Neon</h2>
+
+            <div class="banco">
+
+                <div class="cuenta">
+                    <p>Dinero disponible</p>
+                    <h2>$<span id="dineroBancoPantalla">0</span></h2>
+                </div>
+
+                <div class="cuenta">
+                    <p>Ahorros</p>
+                    <h2>$<span id="ahorros">0</span></h2>
+                </div>
+
+                <button onclick="depositar()">💰 Depositar $100</button>
+
+                <button onclick="retirar()">💵 Retirar $100</button>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- ESTUDIOS -->
+        <section id="estudios" class="seccion">
+
+            <h2 class="titulo">🎓 Universidad</h2>
+
+            <div class="estudio">
+
+                <h3>📚 Estudiar programación</h3>
+
+                <p>
+                    Estudiar cuesta $50 y aumenta tu reputación.
+                </p>
+
+                <button onclick="estudiar()">
+                    Estudiar por $50
+                </button>
+
+                <div class="progresoEstudio">
+                    <div id="estudioBarra"></div>
+                </div>
+
+                <p>
+                    Progreso: <span id="progresoEstudio">0</span>%
+                </p>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- ACTIVIDAD -->
+        <section class="actividad">
+
+            <h2>📜 Actividad</h2>
+
+            <div id="registro"></div>
+
+        </section>
+
+    </main>
+
+
+    <footer>
+        <p>🌆 NEON CITY — LIFE SIMULATOR</p>
+        <p>Construye tu propia vida.</p>
+    </footer>
+
+
+    <script src="script.js"></script>
+
+</body>
+</html>
